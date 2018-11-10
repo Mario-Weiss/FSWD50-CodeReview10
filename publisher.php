@@ -11,10 +11,12 @@
 
 	<title>The Big Library</title>
 </head>
-<body>
-	<?php 
+<body class="bg-secondary">
+	<?php
+	$page = "publisher";
 	include "config.php"; 
 	include "nav.php";
+
 
 	If (isset($_GET["delete"]) && isset($_GET["id"])) {
 		$condition["id"] = $_GET["id"];
@@ -26,7 +28,7 @@
 		<div class="row justify-content-center">
 			<div class="col-8 text-center">
 				<h2>publisher overview</h2>
-				<table class="table table-bordered table-hover">
+				<table class="table table-bordered table-dark table-striped table-hover">
 					<thead>
 						<tr>
 							<th>name</th>
@@ -56,9 +58,6 @@
 			</div>
 			</div>
 		</div>
-
-
-	</div>
 	
 	
 

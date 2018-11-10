@@ -11,8 +11,9 @@
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<title>The Big Library</title>
 </head>
-<body>
+<body class="bg-secondary">
 	<?php 
+	$page = "edit";
 	include "config.php"; 
 	include "nav.php";
 	

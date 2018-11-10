@@ -6,16 +6,16 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class=<?php if ($page=='index'){echo'"active ';}else{echo '"';} ?>nav-item">
         <a class="nav-link" href="index.php">Media <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class=<?php if ($page=='author'){echo'"active ';}else{echo '"';} ?>nav-item">
         <a class="nav-link" href="author.php">Author</a>
       </li>
-      <li class="nav-item">
+      <li class=<?php if ($page=='publisher'){echo'"active ';}else{echo '"';} ?>nav-item">
         <a class="nav-link" href="publisher.php">Publisher</a>
       </li>
-      <li class="nav-item dropdown">
+      <li class=<?php if ($page=='edit'){echo'"active ';}else{echo '"';} ?>nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           insert new
         </a>
@@ -31,8 +31,8 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li> -->
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline my-2 my-lg-0" method="post" <?php echo 'action="'.$page.'.php">'; ?>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  name="search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
