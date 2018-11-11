@@ -52,7 +52,7 @@
 	<div class="container-fluid pt-5">
 		<div class="row justify-content-center">
 			<div class="col-lg-6">
-				<div class="card">
+				<div class="card bg-dark text-white">
 					<div class=<?php if ($id !='') { echo'"bg-warning text-dark ';} else {echo '"bg-primary text-white';} ?> card-header">
 						enter media details
 					</div>
@@ -165,7 +165,7 @@
 	<div class="container-fluid pt-5">
 		<div class="row justify-content-center">
 			<div class="col-lg-6">
-				<div class="card">
+				<div class="card bg-dark text-white">
 					<div class=<?php if ($id !='') { echo'"bg-warning text-dark ';} else {echo '"bg-primary text-white';} ?> card-header">
 						<?php if ($id != ''){echo "enter";}else{echo "edit";} ?> author details
 					</div>
@@ -216,7 +216,7 @@
 	<div class="container-fluid pt-5">
 		<div class="row justify-content-center">
 			<div class="col-lg-6">
-				<div class="card">
+				<div class="card bg-dark text-white">
 					<div class=<?php if ($id !='') { echo'"bg-warning text-dark ';} else {echo '"bg-primary text-white';} ?> card-header">
 						enter publisher details
 					</div>
@@ -285,10 +285,10 @@
 					$set[$value] = $values[$key];
 				}
 				$obj->update($table,$set,$condition);
-				echo("<script>swal('Good job!', 'media updated successully!', 'success').then((value) => { window.location.href='index.php';});</script>");
+				echo("<script>swal('Update successful!', '', 'success').then((value) => { window.location.href='index.php';});</script>");
 			}else {
 				$obj->insert($table,$fields,$values);
-				echo("<script>swal('Good job!', 'media created successully!', 'success').then((value) => {var a = window.location.href; window.location.href=a;});</script>");
+				echo("<script>swal('New Media created successully!','', 'success').then((value) => {var a = window.location.href; window.location.href=a;});</script>");
 			}
 		}
     }
@@ -309,10 +309,10 @@
 					$set[$value] = $values[$key];
 				}
 				$obj->update($table,$set,$condition);
-				echo("<script>swal('Good job!', 'author updated successully!', 'success').then((value) => { window.location.href='author.php';});</script>");
+				echo("<script>swal('Update successful!', '', 'success').then((value) => { window.location.href='author.php';});</script>");
 			} else {
 				$obj->insert($table,$fields,$values);
-				echo("<script>swal('Good job!', 'author created successully!', 'success').then((value) => {var a = window.location.href; window.location.href=a;});</script>");
+				echo("<script>swal('New Author created successully!','', 'success').then((value) => {var a = window.location.href; window.location.href=a;});</script>");
 			}
 		}
 	}
@@ -334,10 +334,10 @@
 					$set[$value] = $values[$key];
 				}
 				$obj->update($table,$set,$condition);
-				echo("<script>swal('Good job!', 'publisher updated successully!', 'success').then((value) => { window.location.href='publisher.php';});</script>");
+				echo("<script>swal('Update successful!', '', 'success').then((value) => { window.location.href='publisher.php';});</script>");
 			} else {
 				$obj->insert($table,$fields,$values);
-				echo("<script>swal('Good job!', 'publisher created successully!', 'success').then((value) => {var a = window.location.href; window.location.href=a;});</script>");
+				echo("<script>swal('New publisher inserted!', '', 'success').then((value) => {var a = window.location.href; window.location.href=a;});</script>");
 			}
 		}
 	}

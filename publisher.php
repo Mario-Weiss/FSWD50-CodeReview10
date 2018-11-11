@@ -8,7 +8,7 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<title>The Big Library</title>
 </head>
 <body class="bg-secondary">
@@ -26,30 +26,31 @@
 	
 	<div class="container-fluid pt-5">
 		<div class="row justify-content-center">
-			<div class="col-8 text-center">
+			<div class="col-xl-8 col-lg-10 col-md-12 text-center">
 				<h2>publisher overview</h2>
 				<table class="table table-bordered table-dark table-striped table-hover">
 					<thead>
 						<tr>
-							<th>name</th>
-							<th>adress</th>
-							<th>size</th>
+							<th>name &nbsp;<a href="publisher.php?sort=name asc"><i class="fas fa-chevron-up"></i></a><a href="publisher.php?sort=name desc"><i class="fas fa-chevron-down"></i></a></th>
+							<th>adress &nbsp;<a href="publisher.php?sort=adress asc"><i class="fas fa-chevron-up"></i></a><a href="publisher.php?sort=adress desc"><i class="fas fa-chevron-down"></i></a></th>
+							<th>size &nbsp;<a href="publisher.php?sort=size asc"><i class="fas fa-chevron-up"></i></a><a href="publisher.php?sort=size desc"><i class="fas fa-chevron-down"></i></a></th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$table ="publisher";
-						$rows = $obj->fetch_data($table);
+						$orderby = isset($_GET["sort"]) ? "ORDER BY ".$_GET["sort"] : '';
+						$rows = $obj->fetch_data($table,'*','',$orderby);
 						foreach ($rows as $row) {
 						?>
 						<tr>
-							<td><?php echo $row["name"]; ?></td>
-							<td><?php echo $row["adress"]; ?></td>
-							<td><?php echo $row["size"]; ?></td>
+							<td><?php echo htmlspecialchars($row["name"]); ?></td>
+							<td><?php echo htmlspecialchars($row["adress"]); ?></td>
+							<td><?php echo htmlspecialchars($row["size"]); ?></td>
 							<td><a href="edit.php?publisher=1&edit=1&id=<?php echo $row["id"]; ?>" class="btn-sm btn btn-primary">edit</a>
 								<a href="publisher.php?delete=1&id=<?php echo $row["id"]; ?>" class="btn-sm btn btn-danger">delete</a>
-								<a href="publisher.php?show=1&id=<?php echo $row["id"]; ?>" class="btn-sm btn btn-success">show media</a>
+								<a href="details.php?type=publisher&id=<?php echo $row["id"]."&title=".$row["name"]; ?>" class="btn-sm btn btn-success">show media</a>
 							</td>
 						</tr>
 						<?php } ?>

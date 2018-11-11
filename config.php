@@ -28,12 +28,12 @@ class Database
 		$this->connect->query($sql);
 		mysqli_close($this->connect);
 	}
-	public function fetch_data($table,$fields='*',$join='',$orderby=''){
+	public function fetch_data($table,$fields='*',$join='',$where='',$orderby=''){
 		$this->connect();
 		$fields = is_array($fields) ? implode(",", $fields) : $fields;
 		$join = is_array($join) ? implode(" ", $join) : $join;
 		$orderby = is_array($orderby) ? implode(" ", $orderby) : $orderby;
-		$sql = "SELECT ".$fields." FROM ".$table." ".$join." ".$orderby." ;";
+		$sql = "SELECT ".$fields." FROM ".$table." ".$join." ".$where." ".$orderby." ;";
 		$result = $this->connect->query($sql);
 		return $result->fetch_all(MYSQLI_ASSOC);
 	}

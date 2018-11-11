@@ -8,7 +8,7 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<title>The Big Library</title>
 </head>
 <body class="bg-secondary">
@@ -31,23 +31,24 @@
 				<table class="table table-bordered table-dark table-striped table-hover">
 					<thead>
 						<tr>
-							<th>first name</th>
-							<th>last name</th>
+							<th>first name &nbsp;<a href="author.php?sort=name asc"><i class="fas fa-chevron-up"></i></a><a href="author.php?sort=name desc"><i class="fas fa-chevron-down"></i></a></th>
+							<th>last name  &nbsp;<a href="author.php?sort=surname asc"><i class="fas fa-chevron-up"></i></a><a href="author.php?sort=surname desc"><i class="fas fa-chevron-down"></i></a></th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$table ="author";
-						$rows = $obj->fetch_data($table);
+						$orderby = isset($_GET["sort"]) ? "ORDER BY ".$_GET["sort"] : '';
+						$rows = $obj->fetch_data($table,'*','',$orderby);
 						foreach ($rows as $row) {
 						?>
 						<tr>
-							<td><?php echo $row["name"]; ?></td>
-							<td><?php echo $row["surname"]; ?></td>
+							<td><?php echo htmlspecialchars($row["name"]); ?></td>
+							<td><?php echo htmlspecialchars($row["surname"]); ?></td>
 							<td><a href="edit.php?author=1&edit=1&id=<?php echo $row["id"]; ?>" class="btn-sm btn btn-primary">edit</a>
 								<a href="author.php?delete=1&id=<?php echo $row["id"]; ?>" class="btn-sm btn btn-danger">delete</a>
-								<a href="author.php?show=1&id=<?php echo $row["id"]; ?>" class="btn-sm btn btn-success">show media</a>
+								<a href="details.php?type=author&id=<?php echo $row["id"]."&title=".$row["name"]." ".$row["surname"]; ?>" class="btn-sm btn btn-success">show media</a>
 							</td>
 						</tr>
 						<?php } ?>

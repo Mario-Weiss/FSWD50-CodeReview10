@@ -24,7 +24,6 @@
 		$obj->delete("media",$condition);
 	}
 	?>
-	
 	<div class="container-fluid pt-5">
 		<div class="row">
 			<div class="col-12 text-center">
@@ -36,7 +35,7 @@
 							<th>title &nbsp;<a href="index.php?sort=title asc"><i class="fas fa-chevron-up"></i></a><a href="index.php?sort=title desc"><i class="fas fa-chevron-down"></i></a></th>
 							<th>author &nbsp;<a href="index.php?sort=author asc"><i class="fas fa-chevron-up"></i></a><a href="index.php?sort=author desc"><i class="fas fa-chevron-down"></i></a></th>
 							<th>ISBN &nbsp;<a href="index.php?sort=ISBN asc"><i class="fas fa-chevron-up"></i></a><a href="index.php?sort=ISBN desc"><i class="fas fa-chevron-down"></i></a></th>
-							<th>short desc. &nbsp;<a href="index.php?sort=short_desc asc"><i class="fas fa-chevron-up"></i></a><a href="index.php?sort=short_desc desc"><i class="fas fa-chevron-down"></i></a></th>
+							<!-- <th>short desc. &nbsp;<a href="index.php?sort=short_desc asc"><i class="fas fa-chevron-up"></i></a><a href="index.php?sort=short_desc desc"><i class="fas fa-chevron-down"></i></a></th> -->
 							<th>publish date &nbsp;<a href="index.php?sort=publish_date asc"><i class="fas fa-chevron-up"></i></a><a href="index.php?sort=publish_date desc"><i class="fas fa-chevron-down"></i></a></th>
 							<th>publisher &nbsp;<a href="index.php?sort=publisher asc"><i class="fas fa-chevron-up"></i></a><a href="index.php?sort=publisher desc"><i class="fas fa-chevron-down"></i></a></th>
 							<th>type &nbsp;<a href="index.php?sort=type asc"><i class="fas fa-chevron-up"></i></a><a href="index.php?sort=type desc"><i class="fas fa-chevron-down"></i></a></th>
@@ -58,14 +57,14 @@
 							<td><?php echo htmlspecialchars($row["title"]); ?></td>
 							<td><?php echo htmlspecialchars($row["author"]); ?></td>
 							<td><?php echo htmlspecialchars($row["ISBN"]); ?></td>
-							<td><?php echo htmlspecialchars($row["short_desc"]); ?></td>
+							<!-- <td><?php echo htmlspecialchars($row["short_desc"]); ?></td> -->
 							<td><?php echo htmlspecialchars($row["publish_date"]); ?></td>
 							<td><?php echo htmlspecialchars($row["publisher"]); ?></td>
 							<td><?php echo htmlspecialchars($row["type"]); ?></td>
 							<td><?php if ($row["status"] == 1) {echo "available";}else{echo "reserved";} ?></td>
 							<td><a href="edit.php?media=1&edit=1&id=<?php echo $row["id"]; ?>" class="btn-sm btn btn-primary my-1">edit</a>
 								<a href="index.php?delete=1&id=<?php echo $row["id"]; ?>" class="btn-sm btn btn-danger my-1">delete</a>
-								<a href="index.php?show=1&id=<?php echo $row["id"]; ?>" class="btn-sm btn btn-success my-1">details</a>
+								<a href="details.php?type=media&id=<?php echo $row["id"]."&title=".$row["title"]; ?>" class="btn-sm btn btn-success my-1">details</a>
 							</td>
 						</tr>
 						<?php } ?>
